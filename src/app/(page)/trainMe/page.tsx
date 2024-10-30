@@ -1,38 +1,16 @@
-import Image from "next/image";
-// import Link from "next/link";
+import { TrainingCard } from "@/components";
+
+
 
 
 export default function TrainMe() {
   return (
     <>
-
       <h1 className="title mb-2">Entrenarme</h1>
       {/* line separator */}
-      <div className="w-full h-1 bg-blue-950 mb-4"></div>
-
-
-
+      <div className="w-full h-1 bg-blue-950 mb-5"></div>
 
       <section className="mt-8">
-
-        {/* <div className="lg:w-[30%] flex flex-col items-center">
-          <Image
-            className="mb-8"
-            width={300}
-            height={400}
-            alt="ISQUI"
-            src='/images/ISQUI.jpg'
-          />
-
-          <button className="btn-primary">
-            <Link
-              href="http://www.google.com/url?q=http%3A%2F%2Fwww.isqi.org&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw1WORSc9jpbtheVg_42Ay_m"
-            >
-              Descargar materiales
-            </Link>
-          </button>
-        </div> */}
-
 
         <div>
           <h4 className="text-3xl mt-16 mb-6">
@@ -46,49 +24,40 @@ export default function TrainMe() {
           </p>
         </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-
-        <div className="flex justify-between">
-
-          <div className="flex">
-            <Image
-              className="mb-8"
-              width={300}
-              height={50}
-              alt="ISQUI"
-              src='/images/Yaimi_Trujillo_Casañola.png'
-            />
-            <div className="ml-4">
-
-              <p className="font-bold mb-4 text-xl">
-                Dra.C. Yaimi Trujillo Casañola
-              </p>
-
-              <p className="mb-4">
-                Decana en Universidad de las Ciencias Informáticas (UCI)
-              </p>
-
-              <h4 className="font-bold mb-2 text-xl">Entrenamiento </h4>
-
-              <ul>
-                <li className="font-bold mb-1">
-                  Certified Tester Mobile App Tester</li>
-                <li className="font-bold mb-1">
-                  Certified Tester – Test Automation Engineer </li>
-                <li className="font-bold mb-1">
-                  A4Q Scrum Master Pro </li>
-              </ul>
-            </div>
-
-          </div>
-
-
-
+          <TrainingCard
+            photoUrl="/images/Yaimi_Trujillo_Casañola.png"
+            name="Dr. C. Yaimí Trujillo"
+            position="Decana"
+            workplace="Universidad de las Ciencias Informáticas (UCI)"
+            trainings={[
+              "Certified Tester Advanced Level – Test Manager ",
+            ]}
+          />
+          <TrainingCard
+            photoUrl="/images/Alionuska_Velázquez.png"
+            name="MSc. Alionuska Velázquez"
+            position="Profesor"
+            workplace="Universidad de las Ciencias Informáticas (UCI)"
+            trainings={[
+              "Certified Tester Foundation Level ",
+            ]}
+          />
+          <TrainingCard
+            photoUrl="/images/Daniel_Tolosa.png"
+            name="Ing. Daniel Tolosa"
+            position="Representante Chile HASTQB Argentina"
+            workplace=""
+            trainings={[
+              "Certified Tester Mobile App Tester",
+              "Certified Tester – Test Automation Engineer",
+              "A4Q Scrum Master Pro",
+            ]}
+          />
         </div>
 
-
       </section>
-
 
 
     </>

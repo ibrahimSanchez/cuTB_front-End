@@ -19,44 +19,18 @@ import { usePathname } from 'next/navigation';
 import './topMenu.css';
 
 interface Props {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
     window?: () => Window;
 }
 
 const drawerWidth = 240;
 const navItems = [
-    {
-        path: '/about',
-        text: 'Sobre Nosotros'
-    },
-    {
-        path: '/trainMe',
-        text: 'Entrenarme'
-    },
-    {
-        path: '/certifyMe',
-        text: 'Certificarme'
-    },
-    {
-        path: '/certifications',
-        text: 'Certificaciones'
-    },
-    {
-        path: '/workWithUs',
-        text: 'Trabaja con nosotros'
-    },
-    {
-        path: '/news',
-        text: 'Noticias'
-    },
-    {
-        path: '/SCR',
-        text: 'SCR'
-    },
-
+    { path: '/about', text: 'Sobre Nosotros' },
+    { path: '/trainMe', text: 'Entrenarme' },
+    { path: '/certifyMe', text: 'Certificarme' },
+    { path: '/certifications', text: 'Certificaciones' },
+    { path: '/workWithUs', text: 'Trabaja con nosotros' },
+    { path: '/news', text: 'Noticias' },
+    { path: '/SCR', text: 'SCR' },
 ];
 
 export function TopMenuUI(props: Props) {
@@ -71,17 +45,9 @@ export function TopMenuUI(props: Props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <Typography
-                variant="h6"
-                sx={{ my: 2 }}
-                className="navbar-logo flex justify-center">
+            <Typography variant="h6" sx={{ my: 2 }} className="navbar-logo flex justify-center">
                 <Link href='/'>
-                    <Image
-                        alt="Logo"
-                        width={70}
-                        height={70}
-                        src={'/logo.jpg'}
-                    />
+                    <Image alt="Logo" width={70} height={70} src={'/logo.jpg'} />
                 </Link>
             </Typography>
             <Divider sx={{ background: '#fff' }} />
@@ -89,9 +55,7 @@ export function TopMenuUI(props: Props) {
                 {navItems.map(({ path, text }) => (
                     <ListItem key={path} disablePadding>
                         <ListItemButton sx={{ textAlign: 'center' }}>
-                            <Link
-                                className={`${pathname === path ? "active" : ""}`}
-                                href={path}>
+                            <Link className={`${pathname === path ? "active" : ""}`} href={path}>
                                 {text}
                             </Link>
                         </ListItemButton>
@@ -106,7 +70,7 @@ export function TopMenuUI(props: Props) {
     return (
         <>
             <CssBaseline />
-            <AppBar component="nav" >
+            <AppBar component="nav">
                 <Toolbar className='navbar'>
                     <IconButton
                         color="inherit"
@@ -124,33 +88,46 @@ export function TopMenuUI(props: Props) {
                         sx={{ flexGrow: 1, display: { xs: 'none', lg: 'block' } }}
                     >
                         <Link href='/'>
-                            <Image
-                                alt="Logo"
-                                width={70}
-                                height={70}
-                                src="/logo.jpg"
-                            />
+                            <Image alt="Logo" width={70} height={70} src="/logo.jpg" />
                         </Link>
                     </Typography>
                     <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
                         <ul className="navbar-links">
                             {navItems.map(({ path, text }) => (
-                                <li key={path}>
-                                    <Link
-                                        className={`${pathname === path ? "active" : ""}`}
-                                        href={path}>
-                                        {text}
-                                    </Link>
+                                <li key={path} className="relative group">
+                                    {text === 'Entrenarme' ? (
+                                        <Link href={path} className="text-white">
+                                            Entrenarme
+                                        </Link>
+                                    ) : (
+                                        <Link className={`${pathname === path ? "active" : ""}`} href={path}>
+                                            {text}
+                                        </Link>
+                                    )}
+                                    {text === 'Entrenarme' && (
+                                        <ul className="absolute hidden group-hover:block bg-[--navbar] rounded-xl shadow-lg mt-2 py-3">
+                                            <li>
+                                                <Link href="/trainMe/curses" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                                    Cursos
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link href="/trainMe/providers" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                                    Proveedores
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    )}
                                 </li>
                             ))}
                         </ul>
                     </Box>
-                    <div >
+                    <div>
                         {/* <OptionUser /> */}
                     </div>
                 </Toolbar>
             </AppBar>
-            <nav >
+            <nav>
                 <Drawer
                     container={container}
                     variant="temporary"

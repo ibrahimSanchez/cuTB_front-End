@@ -154,8 +154,9 @@ body {
 
 
 
-
-
+.gradient-card {
+  background: linear-gradient(to left, transparent, var(--primary)) var(--text_color)
+}
 
 
 
