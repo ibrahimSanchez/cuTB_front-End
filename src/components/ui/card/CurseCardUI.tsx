@@ -11,11 +11,10 @@ interface Props {
 
 export const CurseCardUI = ({ curse }: Props) => {
 
-    const { name, prise, email, endDate, startDate, curse_levelId } = curse;
+    const { name, prise, email, endDate, startDate } = curse;
 
     const handleCopy = () => {
-        const text = "Texto a copiar";
-        navigator.clipboard.writeText(text)
+        navigator.clipboard.writeText(email)
             .then(() => {
                 alert("Texto copiado al portapapeles!");
             })
@@ -35,9 +34,9 @@ export const CurseCardUI = ({ curse }: Props) => {
                     <h5 className="text-xl tracking-tight text-white">
                         {name}
                     </h5>
-                    <h6 className="text-sm tracking-tight text-white">
+                    {/* <h6 className="text-sm tracking-tight text-white">
                         {curse_levelId}
-                    </h6>
+                    </h6> */}
                 </div>
 
 

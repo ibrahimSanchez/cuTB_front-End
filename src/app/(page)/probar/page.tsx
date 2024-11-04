@@ -1,11 +1,10 @@
 
 
-
 export default function Hola() {
   return (
     <>
 
-      hola
+    hola
 
     </>
   );

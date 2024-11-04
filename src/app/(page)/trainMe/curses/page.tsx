@@ -9,10 +9,7 @@ export default function Curses() {
       {/* line separator */}
       <div className="w-full h-1 bg-blue-950 mb-5"></div>
 
-
-
       <CurseGrid />
-
 
     </>
   )
