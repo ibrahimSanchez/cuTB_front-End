@@ -10,6 +10,7 @@ interface Props {
     open: boolean;
     handleClose: EventListener;
     provider: Provider;
+    // curses: Curse[]
 }
 
 
@@ -81,10 +82,21 @@ export const ProviderDialog = ({ open, handleClose, provider }: Props) => {
             </DialogContent>
 
 
-            {/* <DialogTitle className='mb-4 text-2xl font-bold text-[#053b5e]' id="alert-dialog-title">
-                Datos del proveedor:
-                <div className="w-full h-[2px] bg-[--primary]"></div>
-            </DialogTitle> */}
+
+            {/* <DialogContent className='mb-4 text-2xl font-bold text-[#053b5e]' id="alert-dialog-title">
+                <div className="w-full h-[2px] bg-[--primary]"></div> */}
+
+                {/* {
+                    curses.map(item => (
+                        <DialogContentText
+                            key={item.uid}
+                            className='mb-4' id="alert-dialog-description">
+                           {item.name}
+                        </DialogContentText>
+                    ))
+                } */}
+
+            {/* </DialogContent> */} 
 
         </Dialog>
     )

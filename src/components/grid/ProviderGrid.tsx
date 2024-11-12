@@ -22,8 +22,8 @@ export const ProviderGrid = () => {
     }, []);
 
  
-    const courseProviders = providers.filter(({ type }) => type === 'curse_provided');
-    const examProviders = providers.filter(({ type }) => type === 'exam_provided');
+    const courseProviders = providers.filter(({ type }) => type === 'curse_provider');
+    const examProviders = providers.filter(({ type }) => type === 'exam_provider');
 
     return (
         <>

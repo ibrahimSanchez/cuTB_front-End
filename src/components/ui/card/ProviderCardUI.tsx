@@ -5,6 +5,7 @@ import { Provider } from '@/interfaces';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ProviderDialog } from '../dialog/ProviderDialog';
+// import { getCursesByProviderId } from '@/api';
 
 
 type Props = {
@@ -19,12 +20,27 @@ export const ProviderCardUI = ({ provider }: Props) => {
         country,
         email,
         website,
+        // uid
     } = provider;
 
     const [open, setOpen] = React.useState(false);
+    // const [curses, setCurses] = React.useState<Curse[]>([]);
+
+
+
+    // const loadCurseByProvider = async () => {
+    //     try {
+    //         const res = await getCursesByProviderId(uid);
+    //         setCurses(res.data.curses)
+
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     const handleClickOpen = () => {
         setOpen(true);
+        // loadCurseByProvider()
     };
     const handleClose = () => {
         setOpen(false);
@@ -61,11 +77,9 @@ export const ProviderCardUI = ({ provider }: Props) => {
                     Visitar sitio web
                 </Link>
 
-
                 <button className='mt-4 border shadow-lg px-4 py-2 rounded-lg hover:border-[--primary]' onClick={handleClickOpen}>
                     Ver mas detalles
                 </button>
-
 
             </div>
 
@@ -73,6 +87,7 @@ export const ProviderCardUI = ({ provider }: Props) => {
                 handleClose={handleClose}
                 open={open}
                 provider={provider}
+            // curses={curses}
             />
 
 
