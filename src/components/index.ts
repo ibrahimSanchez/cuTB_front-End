@@ -1,5 +1,6 @@
 
 
+export * from './ui/spinner/Spinner';
 export * from './ui/footer/Footer';
 export * from './ui/top-menu/TopMenuUI';
 export * from './ui/card/TrainingCard';
@@ -10,8 +11,7 @@ export * from './ui/card/AdminModuleCard';
 export * from './ui/form/ProviderFormModal';
 export * from './ui/form/CourseFormModal';
 export * from './ui/form/ExamFormModal';
-export * from './ui/form/CourseLanguageSelector';
-export * from './ui/form/ExamLanguageSelector';
+export * from './ui/form/LanguageSelector';
 
 export * from './grid/CurseGrid';
 export * from './grid/ProviderGrid';

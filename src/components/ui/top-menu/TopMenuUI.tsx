@@ -25,7 +25,10 @@ interface Props {
 const drawerWidth = 240;
 const navItems = [
     { path: '/about', text: 'Sobre Nosotros' },
-    { path: '/trainMe', text: 'Entrenarme' },
+    { path: '/trainMe', text: 'Entrenarme', subItems: [
+        { path: '/trainMe/providers', text: 'Proveedores' },
+        { path: '/trainMe/curses', text: 'Cursos' },
+    ] },
     { path: '/certifyMe', text: 'Certificarme' },
     { path: '/certifications', text: 'Certificaciones' },
     { path: '/workWithUs', text: 'Trabaja con nosotros' },
@@ -52,14 +55,30 @@ export function TopMenuUI(props: Props) {
             </Typography>
             <Divider sx={{ background: '#fff' }} />
             <List className="navbar-links navbar-links-responsive">
-                {navItems.map(({ path, text }) => (
-                    <ListItem key={path} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
-                            <Link className={`${pathname === path ? "active" : ""}`} href={path}>
-                                {text}
-                            </Link>
-                        </ListItemButton>
-                    </ListItem>
+                {navItems.map(({ path, text, subItems }) => (
+                    <React.Fragment key={path}>
+                        <ListItem disablePadding>
+                            <ListItemButton sx={{ textAlign: 'center' }}>
+                                <Link className={`${pathname === path ? "active" : ""}`} href={path}>
+                                    {text}
+                                </Link>
+                            </ListItemButton>
+                        </ListItem>
+                        {/* Submenú para la opción "Entrenarme" en modo responsive */}
+                        {text === 'Entrenarme' && subItems && (
+                            <Box sx={{ pl: 4 }}>
+                                {subItems.map((subItem) => (
+                                    <ListItem key={subItem.path} disablePadding>
+                                        <ListItemButton sx={{ textAlign: 'center' }}>
+                                            <Link href={subItem.path} className="text-gray-800 hover:bg-gray-200">
+                                                {subItem.text}
+                                            </Link>
+                                        </ListItemButton>
+                                    </ListItem>
+                                ))}
+                            </Box>
+                        )}
+                    </React.Fragment>
                 ))}
             </List>
         </Box>
@@ -93,38 +112,26 @@ export function TopMenuUI(props: Props) {
                     </Typography>
                     <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
                         <ul className="navbar-links">
-                            {navItems.map(({ path, text }) => (
+                            {navItems.map(({ path, text, subItems }) => (
                                 <li key={path} className="relative group">
-                                    {text === 'Entrenarme' ? (
-                                        <Link href={path} className="text-white">
-                                            Entrenarme
-                                        </Link>
-                                    ) : (
-                                        <Link className={`${pathname === path ? "active" : ""}`} href={path}>
-                                            {text}
-                                        </Link>
-                                    )}
-                                    {text === 'Entrenarme' && (
+                                    <Link className={`${pathname === path ? "active" : ""}`} href={path}>
+                                        {text}
+                                    </Link>
+                                    {text === 'Entrenarme' && subItems && (
                                         <ul className="absolute hidden group-hover:block bg-[--navbar] rounded-xl shadow-lg mt-2 py-3">
-                                            <li>
-                                                <Link href="/trainMe/curses" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                                                    Cursos
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/trainMe/providers" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
-                                                    Proveedores
-                                                </Link>
-                                            </li>
+                                            {subItems.map((subItem) => (
+                                                <li key={subItem.path}>
+                                                    <Link href={subItem.path} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                                                        {subItem.text}
+                                                    </Link>
+                                                </li>
+                                            ))}
                                         </ul>
                                     )}
                                 </li>
                             ))}
                         </ul>
                     </Box>
-                    <div>
-                        {/* <OptionUser /> */}
-                    </div>
                 </Toolbar>
             </AppBar>
             <nav>
@@ -134,7 +141,7 @@ export function TopMenuUI(props: Props) {
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                        keepMounted: true, // Mejor rendimiento en dispositivos móviles.
                     }}
                     sx={{
                         display: { sm: 'block', lg: 'none' },

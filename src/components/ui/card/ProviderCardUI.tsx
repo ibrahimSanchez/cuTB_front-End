@@ -24,19 +24,6 @@ export const ProviderCardUI = ({ provider }: Props) => {
     } = provider;
 
     const [open, setOpen] = React.useState(false);
-    // const [curses, setCurses] = React.useState<Curse[]>([]);
-
-
-
-    // const loadCurseByProvider = async () => {
-    //     try {
-    //         const res = await getCursesByProviderId(uid);
-    //         setCurses(res.data.curses)
-
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -87,7 +74,6 @@ export const ProviderCardUI = ({ provider }: Props) => {
                 handleClose={handleClose}
                 open={open}
                 provider={provider}
-            // curses={curses}
             />
 
 

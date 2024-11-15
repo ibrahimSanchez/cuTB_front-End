@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle } from '@mui/material';
 import ExamFormModal from '../form/ExamFormModal';
-import ExamLanguageSelector from '../form/ExamLanguageSelector';
 import { Exam } from '@/interfaces';
+import LanguageSelector from '../form/LanguageSelector';
 
 interface ExamCreationModalProps {
     open: boolean;
@@ -41,7 +41,7 @@ export default function ExamCreationModal({ open, onClose, onSubmit, initialData
                     initialData={initialData}
                 />
             ) : (
-                <ExamLanguageSelector onLanguagesSelected={handleLanguagesSelected} />
+                <LanguageSelector onLanguagesSelected={handleLanguagesSelected} />
             )}
         </Dialog>
     );

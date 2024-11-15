@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle } from '@mui/material';
 import CourseFormModal from '../form/CourseFormModal';
-import CourseLanguageSelector from '../form/CourseLanguageSelector';
 import { Curse } from '@/interfaces';
+import LanguageSelector from '../form/LanguageSelector';
 
 interface CourseCreationModalProps {
     open: boolean;
@@ -41,7 +41,7 @@ export default function CourseCreationModal({ open, onClose, onSubmit, initialDa
                     initialData={initialData}
                 />
             ) : (
-                <CourseLanguageSelector onLanguagesSelected={handleLanguagesSelected} />
+                <LanguageSelector onLanguagesSelected={handleLanguagesSelected} />
             )}
         </Dialog>
     );

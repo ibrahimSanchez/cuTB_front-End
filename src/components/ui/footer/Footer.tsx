@@ -19,33 +19,33 @@ export const Footer = () => {
                     <div className="flex flex-col">
                         <Link
                             className="text-gray-500 text-sm hover:underline my-1"
-                            href='#'
+                            href='/about'
                         >
-                            Qué hacemos
+                            Misión
                         </Link>
 
 
                         <Link
                             className="text-gray-500 text-sm hover:underline my-1"
-                            href='#'
+                            href='/about'
                         >
-                            Por qué ISTQB®
+                            Visión
                         </Link>
 
 
                         <Link
                             className="text-gray-500 text-sm hover:underline my-1"
-                            href='#'
+                            href='/about'
                         >
-                            Quienes somos
+                            Objetivos
                         </Link>
 
 
                         <Link
                             className="text-gray-500 text-sm hover:underline my-1"
-                            href='#'
+                            href='/about'
                         >
-                            Juntas de miembros
+                            Estructura
                         </Link>
                     </div>
 
@@ -59,7 +59,7 @@ export const Footer = () => {
                     <div className="flex flex-col">
                         <Link
                             className="text-gray-500 text-sm hover:underline my-1"
-                            href='#'
+                            href='/trainMe/providers'
                         >
                             Encuentre un proveedor de capacitación
                         </Link>
@@ -67,18 +67,18 @@ export const Footer = () => {
 
                         <Link
                             className="text-gray-500 text-sm hover:underline my-1"
-                            href='#'
+                            href='/trainMe/providers'
                         >
                             Encuentre un proveedor de exámenes
                         </Link>
 
 
-                        <Link
+                        {/* <Link
                             className="text-gray-500 text-sm hover:underline my-1"
                             href='#'
                         >
                             Conviértase en un proveedor de formación
-                        </Link>
+                        </Link> */}
 
                     </div>
 
@@ -92,9 +92,9 @@ export const Footer = () => {
                     <div className="flex flex-col">
                         <Link
                             className="text-gray-500 text-sm hover:underline my-1"
-                            href='#'
+                            href='/certifyMe'
                         >
-                            Certificaciones
+                            Certificarme
                         </Link>
 
 
@@ -145,8 +145,9 @@ export const Footer = () => {
                 />
 
                 <p className="text-gray-500">
-                    2024 ISTQB asociación sin ánimo de lucro
-                    47, Avenue des Arts | 1000 Bruselas | Bélgica | N° 0889.625.305
+                    Oficina permanente en la Unión de Informáticos de Cuba <br />
+                    Dirección: Calle 164. No. 203 e/ 3ra y 1ra. Playa. La Habana <br />
+                    Email: cutb@uic.cu
                 </p>
 
                 <div className="sm:flex my-4 ">

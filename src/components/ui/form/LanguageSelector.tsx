@@ -6,11 +6,11 @@ import { getLanguages } from '@/api';
 import { Language } from '@/interfaces';
 
 
-interface CourseLanguageSelectorProps {
+interface LanguageSelectorProps {
     onLanguagesSelected: (languageIds: string[]) => void;
 }
 
-export default function CourseLanguageSelector({ onLanguagesSelected }: CourseLanguageSelectorProps) {
+export default function LanguageSelector({ onLanguagesSelected }: LanguageSelectorProps) {
     const [languages, setLanguages] = useState<Language[]>([]);
     const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
 
@@ -51,7 +51,7 @@ export default function CourseLanguageSelector({ onLanguagesSelected }: CourseLa
                                 label={language.language}
                             />
                         </Grid>
-                    ))}
+                    ))} 
                 </Grid>
             </DialogContent>
             <DialogActions>
