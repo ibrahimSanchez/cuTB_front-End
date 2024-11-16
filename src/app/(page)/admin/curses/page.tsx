@@ -62,9 +62,9 @@ export default function Page() {
   };
 
   const handleFormSubmit = async (curse: Curse, languageIds: string[]) => {
-    
+
     // console.log(curse, languajeIds)
-    
+
     if (currentCourse) {
       await putCurse(curse, languageIds);
     } else {
@@ -98,6 +98,7 @@ export default function Page() {
               <th className="px-4 py-2 border border-slate-600 text-start">Fecha Fin</th>
               <th className="px-4 py-2 border border-slate-600 text-start">Precio</th>
               <th className="px-4 py-2 border border-slate-600 text-start">Email</th>
+              <th className="px-4 py-2 border border-slate-600 text-start">Estado</th>
               <th className="px-4 py-2 border border-slate-600 text-start">Acciones</th>
             </tr>
           </thead>
@@ -121,6 +122,9 @@ export default function Page() {
                   <td className="px-4 py-2 border border-slate-700">{course.endDate}</td>
                   <td className="px-4 py-2 border border-slate-700">{course.prise}</td>
                   <td className="px-4 py-2 border border-slate-700">{course.email}</td>
+                  <td className="px-4 py-2 border border-slate-700">
+                    {course.approved ? "Aprobado" : "Pendiente"}
+                  </td>
                   <td className="px-4 py-2 flex space-x-2">
                     <button
                       onClick={() => handleDeleteCourse(course.uid)}

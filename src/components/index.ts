@@ -15,6 +15,10 @@ export * from './ui/form/LanguageSelector';
 
 export * from './grid/CurseGrid';
 export * from './grid/ProviderGrid';
+export * from './grid/ApprovalCurseExamGrid';
 
 export * from './ui/modal/CourseCreationModal';
 export * from './ui/modal/ExamCreationModal';
+
+export * from './ui/table/ApprovalCurseExamTable';
+export * from './ui/spinner/Spinner';

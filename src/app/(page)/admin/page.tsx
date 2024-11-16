@@ -22,6 +22,12 @@ export default function Page() {
       onClick: () => router.push('/admin/providers'),
     },
     {
+      title: 'Aceptar/Denegar cursos/exámenes',
+      description: 'Aprobación de cursos y exámenes',
+      icon: <FaUserCog />, 
+      onClick: () => router.push('/admin/approvalCurseExam'),
+    },
+    {
       title: 'Cursos',
       description: 'Administrar cursos y contenidos',
       icon: <FaChartLine />, 

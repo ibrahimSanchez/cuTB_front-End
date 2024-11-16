@@ -95,6 +95,7 @@ export default function Page() {
               <th className="px-4 py-2 border border-slate-600 text-start">Tema</th>
               <th className="px-4 py-2 border border-slate-600 text-start">Precio</th>
               <th className="px-4 py-2 border border-slate-600 text-start">Email</th>
+              <th className="px-4 py-2 border border-slate-600 text-start">Estado</th>
               <th className="px-4 py-2 border border-slate-600 text-start">Acciones</th>
             </tr>
           </thead>
@@ -116,6 +117,9 @@ export default function Page() {
                   <td className="px-4 py-2 border border-slate-700">{exam.topic}</td>
                   <td className="px-4 py-2 border border-slate-700">{exam.prise}</td>
                   <td className="px-4 py-2 border border-slate-700">{exam.email}</td>
+                  <td className="px-4 py-2 border border-slate-700">
+                    {exam.approved ? "Aprobado" : "Pendiente"}
+                  </td>
                   <td className="px-4 py-2 flex space-x-2">
                     <button
                       onClick={() => handleDeleteExam(exam.uid)}

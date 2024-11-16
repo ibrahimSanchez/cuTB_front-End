@@ -5,3 +5,4 @@ export * from './exam';
 export * from './stream';
 export * from './language';
 export * from './login';
+export * from './approve';

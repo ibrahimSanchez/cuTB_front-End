@@ -44,6 +44,9 @@ export const CurseGrid = () => {
     }, []);
 
 
+    const curseShow = curses.filter(({ approved }) => approved);
+
+
     return (
         <section className="mt-8">
 
@@ -59,9 +62,9 @@ export const CurseGrid = () => {
                                 { "justify-evenly": false })
                         }>
                             {
-                                curses.filter(({ curse_levelId }) => curse_levelId === uid).length === 0 ?
+                                curseShow.filter(({ curse_levelId }) => curse_levelId === uid).length === 0 ?
                                     <p className="text-lg text-[--primary] underline cursor-default">No hay cursos disponibles</p> :
-                                    curses.filter(({ curse_levelId }) => curse_levelId === uid).map((curse) => (
+                                    curseShow.filter(({ curse_levelId }) => curse_levelId === uid).map((curse) => (
                                         <CurseCardUI
                                             key={curse.uid}
                                             curse={curse}

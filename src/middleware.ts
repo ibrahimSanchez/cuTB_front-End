@@ -42,7 +42,7 @@ console.log(userRole, token)
             return NextResponse.redirect(url);
         }
 
-        if (requestedPage === '/admin/users' || requestedPage === '/admin/providers') {
+        if (requestedPage === '/admin/users' || requestedPage === '/admin/providers' || requestedPage === '/admin/approvalCurseExam') {
             if (userRole !== 'ADMIN_ROLE') {
                 url.pathname = `/unauthorized`;
                 url.search = `p=${requestedPage}`;
