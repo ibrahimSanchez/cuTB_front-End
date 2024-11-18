@@ -5,7 +5,7 @@
 
 export interface Exam {
     uid: string;
-    approved: string;
+    approved: boolean;
     topic: string;
     prise: string;
     email: string;

@@ -12,6 +12,7 @@ export * from './ui/form/ProviderFormModal';
 export * from './ui/form/CourseFormModal';
 export * from './ui/form/ExamFormModal';
 export * from './ui/form/LanguageSelector';
+export * from './ui/form/UserCreationModal';
 
 export * from './grid/CurseGrid';
 export * from './grid/ProviderGrid';
@@ -19,6 +20,8 @@ export * from './grid/ApprovalCurseExamGrid';
 
 export * from './ui/modal/CourseCreationModal';
 export * from './ui/modal/ExamCreationModal';
+export * from './ui/modal/ConfirmationModal';
+export * from './ui/modal/MessageModal';
 
 export * from './ui/table/ApprovalCurseExamTable';
 export * from './ui/spinner/Spinner';

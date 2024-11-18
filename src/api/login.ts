@@ -1,4 +1,3 @@
-import { User } from "@/interfaces";
 import axios from "axios";
 
 type UserLogin = {
@@ -12,8 +11,3 @@ export const login = (user: UserLogin) => {
     return axios.post('http://localhost:8080/api/auth/login', user)
 }
 
-
-export const newAccount = (user: User) => {
-    // console.log(usuario)
-    return axios.post('http://localhost:8080/api/users', user)
-}

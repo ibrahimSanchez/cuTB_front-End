@@ -10,10 +10,13 @@ interface Level {
     stream?: string;
 }
 
+
+
 interface ProviderCoursesExamsProps {
     providerId: string;
     providerType: string;
 }
+
 
 export default function ProviderCoursesExams({ providerId, providerType }: ProviderCoursesExamsProps) {
     const [courses, setCourses] = useState<Curse[]>([]);
@@ -40,14 +43,19 @@ export default function ProviderCoursesExams({ providerId, providerType }: Provi
     }, [providerId]);
 
     // Ajustamos groupByLevel para aceptar Curse o Exam, y filtramos niveles sin cursos/exámenes
-    const groupByLevel = <T extends { uid: string; curse_levelId?: string; streamId?: string }>(
+    const groupByLevel = <T extends {
+        uid: string;
+        curse_levelId?: string;
+        streamId?: string;
+        approved: boolean
+    }>(
         items: T[],
         levels: Level[],
         levelKey: 'curse_levelId' | 'streamId'
     ) => levels
         .map((level) => ({
             level,
-            items: items.filter((item) => item[levelKey] === level.uid),
+            items: items.filter((item) => (item[levelKey] === level.uid && item.approved)),
         }))
         .filter((group) => group.items.length > 0); // Filtrar niveles sin cursos/exámenes
 

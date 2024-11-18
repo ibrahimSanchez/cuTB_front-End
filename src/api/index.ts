@@ -6,3 +6,4 @@ export * from './stream';
 export * from './language';
 export * from './login';
 export * from './approve';
+export * from './user';

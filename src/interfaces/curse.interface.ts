@@ -6,7 +6,7 @@
 export interface Curse {
     uid: string;
     name: string;
-    approved:string;
+    approved: boolean;
     startDate: string;
     endDate: string;
     prise: string;

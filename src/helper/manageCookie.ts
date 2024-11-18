@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import { isExpired } from "react-jwt";
+// import { isExpired } from "react-jwt";
 
 export const getCookie = (name: string) => {
   return Cookies.get(name);
@@ -14,7 +14,7 @@ export const removeCookie = (name: string) => {
 };
 
 
-export const isAuth = () => {
-  const token = getCookie('AUTH_TOKEN_KEY');
-  return !isExpired(token || '');
-} 
+// export const isAuth = () => {
+//   const token = getCookie('AUTH_TOKEN_KEY');
+//   return !isExpired(token || '');
+// } 

@@ -1,3 +1,4 @@
+import { getCookie } from "@/helper";
 import { Provider } from "@/interfaces";
 import axios from "axios";
 
@@ -8,17 +9,43 @@ export const getProviders = () => {
 
 
 export const postProvider = (data: Provider) => {
-    return axios.post(`http://localhost:8080/api/providers`, data)
+
+    const token = getCookie('x-token')
+
+    const config = {
+        headers: {
+            'x-token': token
+        }
+    };
+
+    return axios.post(`http://localhost:8080/api/providers`, data, config)
 }
 
 export const putProvider = (data: Provider) => {
     const { uid } = data;
 
-    return axios.put(`http://localhost:8080/api/providers/${uid}`, data)
+    const token = getCookie('x-token')
+
+    const config = {
+        headers: {
+            'x-token': token
+        }
+    };
+
+    return axios.put(`http://localhost:8080/api/providers/${uid}`, data, config)
 }
 
 
 export const deleteProvider = (id: string) => {
-    return axios.delete(`http://localhost:8080/api/providers/${id}`)
+
+    const token = getCookie('x-token')
+
+    const config = {
+        headers: {
+            'x-token': token
+        }
+    };
+    
+    return axios.delete(`http://localhost:8080/api/providers/${id}`, config)
 }
 

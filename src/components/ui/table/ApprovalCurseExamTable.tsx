@@ -1,16 +1,23 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Curse, Exam } from '@/interfaces';
 import { approveCurse, approveExam, deleteCurse, deleteExam } from '@/api';
+import { ConfirmationModal, MessageModal } from '@/components';
 
 interface ProviderTableProps {
   data: Curse[] | Exam[];
   type: 'course' | 'exam';
-  reloadData: () => void; 
+  reloadData: () => void;
 }
 
 const ApprovalCurseExamTable: React.FC<ProviderTableProps> = ({ data, type, reloadData }) => {
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+  const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<string | null>(null);
+
   const handleApprove = async (id: string) => {
     try {
       if (type === 'course') {
@@ -18,22 +25,43 @@ const ApprovalCurseExamTable: React.FC<ProviderTableProps> = ({ data, type, relo
       } else {
         await approveExam(id);
       }
-      reloadData(); 
+      setMessage(`${type === 'course' ? 'Curso' : 'Examen'} aprobado exitosamente.`);
+      setIsError(false);
+      reloadData();
     } catch (error) {
       console.error(`Error al aprobar ${type}:`, error);
+      setMessage(`Error al aprobar el ${type === 'course' ? 'curso' : 'examen'}.`);
+      setIsError(true);
+    } finally {
+      setIsMessageOpen(true);
     }
   };
 
-  const handleDeny = async (id: string) => {
+  const handleDeny = (id: string) => {
+    setItemToDelete(id);
+    setIsConfirmationOpen(true);
+  };
+
+  const confirmDeny = async () => {
+    setIsConfirmationOpen(false);
+    if (!itemToDelete) return;
+
     try {
       if (type === 'course') {
-        await deleteCurse(id);
+        await deleteCurse(itemToDelete);
       } else {
-        await deleteExam(id);
+        await deleteExam(itemToDelete);
       }
-      reloadData(); // Recargar datos después de la acción
+      setMessage(`${type === 'course' ? 'Curso' : 'Examen'} denegado exitosamente.`);
+      setIsError(false);
+      reloadData();
     } catch (error) {
       console.error(`Error al denegar ${type}:`, error);
+      setMessage(`Error al denegar el ${type === 'course' ? 'curso' : 'examen'}.`);
+      setIsError(true);
+    } finally {
+      setIsMessageOpen(true);
+      setItemToDelete(null);
     }
   };
 
@@ -119,6 +147,26 @@ const ApprovalCurseExamTable: React.FC<ProviderTableProps> = ({ data, type, relo
           )}
         </tbody>
       </table>
+
+      {isConfirmationOpen && (
+        <ConfirmationModal
+          open={isConfirmationOpen}
+          title="Confirmar eliminación"
+          message={`¿Está seguro que desea denegar este ${type === 'course' ? 'curso' : 'examen'}?`}
+          onConfirm={confirmDeny}
+          onCancel={() => setIsConfirmationOpen(false)}
+        />
+      )}
+
+      {isMessageOpen && (
+        <MessageModal
+          open={isMessageOpen}
+          title={isError ? 'Error' : 'Éxito'}
+          message={message}
+          isError={isError}
+          onClose={() => setIsMessageOpen(false)}
+        />
+      )}
     </div>
   );
 };

@@ -2,23 +2,22 @@
 
 import React, { useEffect, useState } from 'react';
 import { FaTrash, FaPlus, FaEdit } from 'react-icons/fa';
-import {
-  deleteExam,
-  getExams,
-  postExam,
-  putExam,
-} from '@/api';
+import { deleteExam, getExams, postExam, putExam } from '@/api';
 import { Exam } from '@/interfaces';
 import ExamCreationModal from '@/components/ui/modal/ExamCreationModal';
-
-
+import { ConfirmationModal, MessageModal } from '@/components';
 
 export default function Page() {
   const [exams, setExams] = useState<Exam[]>([]);
-  const [selectedExams, setSelectedExams] = useState<Set<string>>(new Set());
+  // const [selectedExams, setSelectedExams] = useState<Set<string>>(new Set());
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [currentExam, setCurrentExam] = useState<Exam | null>(null);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState<boolean>(false);
+  const [isMessageOpen, setIsMessageOpen] = useState<boolean>(false);
+  const [examToDelete, setExamToDelete] = useState<string | null>(null);
+  const [message, setMessage] = useState<string>('');
+  const [isError, setIsError] = useState<boolean>(false);
 
   useEffect(() => {
     fetchExams();
@@ -26,31 +25,49 @@ export default function Page() {
 
   const fetchExams = async () => {
     setIsLoading(true);
-    const res = await getExams();
-    setExams(res.data.exams);
+    try {
+      const res = await getExams();
+      setExams(res.data.exams);
+    } catch (error) {
+      console.error(error);
+    }
     setIsLoading(false);
   };
 
-  const handleSelectExam = (id: string) => {
-    setSelectedExams(prevSelection => {
-      const newSelection = new Set(prevSelection);
-      if (newSelection.has(id)) {
-        newSelection.delete(id);
-      } else {
-        newSelection.add(id);
-      }
-      return newSelection;
-    });
+  // const handleSelectExam = (id: string) => {
+  //   setSelectedExams((prevSelection) => {
+  //     const newSelection = new Set(prevSelection);
+  //     if (newSelection.has(id)) {
+  //       newSelection.delete(id);
+  //     } else {
+  //       newSelection.add(id);
+  //     }
+  //     return newSelection;
+  //   });
+  // };
+
+  const handleDeleteExam = (id: string) => {
+    setExamToDelete(id);
+    setIsConfirmationOpen(true);
   };
 
-  const handleDeleteSelected = async () => {
-    setSelectedExams(new Set());
-    fetchExams();
-  };
+  const confirmDeleteExam = async () => {
+    setIsConfirmationOpen(false);
+    if (!examToDelete) return;
 
-  const handleDeleteExam = async (id: string) => {
-    await deleteExam(id);
-    fetchExams();
+    try {
+      await deleteExam(examToDelete);
+      setMessage('Examen eliminado exitosamente.');
+      setIsError(false);
+      fetchExams();
+    } catch (error) {
+      setMessage('Error al eliminar el examen.');
+      setIsError(true);
+      console.error(error);
+    } finally {
+      setIsMessageOpen(true);
+      setExamToDelete(null);
+    }
   };
 
   const handleAddExam = () => {
@@ -64,16 +81,27 @@ export default function Page() {
   };
 
   const handleFormSubmit = async (exam: Exam, languageIds: string[]) => {
-    if (currentExam) {
-      await putExam(exam, languageIds);
-    } else {
-      await postExam(exam, languageIds);
+    try {
+      if (currentExam) {
+        await putExam(exam, languageIds);
+        setMessage('Examen modificado exitosamente.');
+      } else {
+        await postExam(exam, languageIds);
+        setMessage('Examen añadido exitosamente.');
+      }
+      setIsError(false);
+      setIsModalOpen(false);
+      fetchExams();
+    } catch (error) {
+      setMessage('Error al guardar los cambios.');
+      setIsError(true);
+      console.error(error);
+    } finally {
+      setIsMessageOpen(true);
     }
-    setIsModalOpen(false);
-    fetchExams();
   };
 
-  const isMultiDeleteDisabled = selectedExams.size === 0;
+  // const isMultiDeleteDisabled = selectedExams.size === 0;
 
   return (
     <>
@@ -89,9 +117,9 @@ export default function Page() {
 
       <div className="overflow-x-auto max-h-80">
         <table className="min-w-full bg-white rounded-lg shadow">
-          <thead className='bg-[--primary] text-white uppercase text-sm'>
+          <thead className="bg-[--primary] text-white uppercase text-sm">
             <tr>
-              <th className="px-4 py-2 border border-slate-600 text-start">Seleccionar</th>
+              {/* <th className="px-4 py-2 border border-slate-600 text-start">Seleccionar</th> */}
               <th className="px-4 py-2 border border-slate-600 text-start">Tema</th>
               <th className="px-4 py-2 border border-slate-600 text-start">Precio</th>
               <th className="px-4 py-2 border border-slate-600 text-start">Email</th>
@@ -102,23 +130,25 @@ export default function Page() {
           <tbody>
             {isLoading ? (
               <tr>
-                <td colSpan={5} className="text-center py-4">Cargando exámenes...</td>
+                <td colSpan={6} className="text-center py-4">
+                  Cargando exámenes...
+                </td>
               </tr>
             ) : (
-              exams.map(exam => (
+              exams.map((exam) => (
                 <tr key={exam.uid} className="border-t">
-                  <td className="px-4 py-2 text-center border border-slate-700">
+                  {/* <td className="px-4 py-2 text-center border border-slate-700">
                     <input
                       type="checkbox"
                       checked={selectedExams.has(exam.uid)}
                       onChange={() => handleSelectExam(exam.uid)}
                     />
-                  </td>
+                  </td> */}
                   <td className="px-4 py-2 border border-slate-700">{exam.topic}</td>
                   <td className="px-4 py-2 border border-slate-700">{exam.prise}</td>
                   <td className="px-4 py-2 border border-slate-700">{exam.email}</td>
                   <td className="px-4 py-2 border border-slate-700">
-                    {exam.approved ? "Aprobado" : "Pendiente"}
+                    {exam.approved ? 'Aprobado' : 'Pendiente'}
                   </td>
                   <td className="px-4 py-2 flex space-x-2">
                     <button
@@ -141,22 +171,32 @@ export default function Page() {
         </table>
       </div>
 
-      <div className="flex justify-end mt-4 space-x-2">
-        <button
-          onClick={handleDeleteSelected}
-          disabled={isMultiDeleteDisabled}
-          className={`px-4 py-2 rounded-lg ${isMultiDeleteDisabled ? 'bg-gray-400' : 'bg-red-500 text-white hover:bg-red-600'}`}
-        >
-          Eliminar marcados
-        </button>
-      </div>
-
       {isModalOpen && (
         <ExamCreationModal
           open={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           onSubmit={handleFormSubmit}
           initialData={currentExam || undefined}
+        />
+      )}
+
+      {isConfirmationOpen && (
+        <ConfirmationModal
+          open={isConfirmationOpen}
+          title="Confirmar eliminación"
+          message="¿Está seguro que desea eliminar este examen? Esta acción no se puede deshacer."
+          onConfirm={confirmDeleteExam}
+          onCancel={() => setIsConfirmationOpen(false)}
+        />
+      )}
+
+      {isMessageOpen && (
+        <MessageModal
+          open={isMessageOpen}
+          title={isError ? 'Error' : 'Éxito'}
+          message={message}
+          isError={isError}
+          onClose={() => setIsMessageOpen(false)}
         />
       )}
     </>

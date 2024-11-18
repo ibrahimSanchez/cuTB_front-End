@@ -3,13 +3,9 @@ import type { NextRequest } from 'next/server';
 import { isExpired } from 'react-jwt';
 
 
-
 export function middleware(req: NextRequest) {
     const token = req.cookies.get('x-token')?.value;
     const userRole = req.cookies.get('x-role')?.value;
-
-    console.log(userRole)
-console.log(userRole, token)
 
     const requestedPage = req.nextUrl.pathname;
     const url = req.nextUrl.clone();

@@ -1,3 +1,4 @@
+import { getCookie } from "@/helper";
 import { Exam } from "@/interfaces";
 import axios from "axios";
 
@@ -30,9 +31,12 @@ export const getExamsByProviderId = (id: string) => {
 
 export const postExam = (data: Exam, languageIds: string[]) => {
 
+    const token = getCookie('x-token')
+
     const config = {
         headers: {
-            'x-languages': languageIds
+            'x-languages': languageIds,
+            'x-token': token
         }
     };
 
@@ -44,9 +48,12 @@ export const putExam = (data: Exam, languageIds: string[]) => {
 
     const { uid } = data;
 
+    const token = getCookie('x-token')
+
     const config = {
         headers: {
-            'x-languages': languageIds
+            'x-languages': languageIds,
+            'x-token': token
         }
     };
 
@@ -56,6 +63,15 @@ export const putExam = (data: Exam, languageIds: string[]) => {
 
 
 export const deleteExam = (id: string) => {
-    return axios.delete(`http://localhost:8080/api/exams/${id}`);
+
+    const token = getCookie('x-token')
+
+    const config = {
+        headers: {
+            'x-token': token
+        }
+    };
+
+    return axios.delete(`http://localhost:8080/api/exams/${id}`, config);
     // console.log(id)
 }

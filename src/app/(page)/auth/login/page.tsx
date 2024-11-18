@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Image from 'next/image';
 import {
-  Button,
   FormControl,
   FormHelperText,
   IconButton,
@@ -29,7 +28,7 @@ type Inputs = {
 
 export default function Page() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Estado de carga
+  const [isLoading, setIsLoading] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const setToken = useAuthStore((state) => state.setToken);
@@ -43,7 +42,7 @@ export default function Page() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    setIsLoading(true); // Inicia la carga
+    setIsLoading(true);
     try {
       const res = await login(data);
 
@@ -55,7 +54,7 @@ export default function Page() {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
@@ -124,15 +123,12 @@ export default function Page() {
             )}
           </FormControl>
 
-          <Button
-            sx={{ textTransform: 'none' }}
-            variant="contained"
-            size="large"
+          <button
             type="submit"
-            className="bg-[#053b5e] hover:bg-[#062b43] shadow-lg"
+            className="bg-[--primary] hover:bg-[--secondary] shadow-lg py-3 rounded-sm text-white mt-4"
           >
             Iniciar
-          </Button>
+          </button>
         </form>
       </div>
     </div>
