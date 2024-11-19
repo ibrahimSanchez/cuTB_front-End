@@ -3,8 +3,10 @@
 import Link from "next/link";
 import clsx from 'clsx';
 import { IconButton, Tooltip } from "@mui/material";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { FaUsersCog } from "react-icons/fa";
+import { IoIosLogOut } from "react-icons/io";
+import { removeCookie } from "@/helper";
 
 
 
@@ -12,6 +14,14 @@ import { FaUsersCog } from "react-icons/fa";
 export default function RootLayout({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
+    
+    const router = useRouter();
+
+    const handleLogOut = () => {
+        removeCookie('x-token');
+        removeCookie('x-role');
+        router.push('/');
+    }
 
     const pathname = usePathname();
 
@@ -37,6 +47,21 @@ export default function RootLayout({ children }: Readonly<{
                                         className='gradient-card2 w-8 h-8 p-2 rounded-full text-white'
                                     />
                                 </Link>
+                            </IconButton>
+                        </Tooltip>
+                    </div>
+
+                    <div>
+                        <Tooltip title="Cerrar sesión">
+                            <IconButton className="bg-[--primary] hover:bg-[--secondary]">
+                                <div
+                                    onClick={() => handleLogOut()}
+                                >
+                                    <IoIosLogOut
+                                        size={20}
+                                        className='gradient-card2 w-8 h-8 p-2 rounded-full text-white'
+                                    />
+                                </div>
                             </IconButton>
                         </Tooltip>
                     </div>

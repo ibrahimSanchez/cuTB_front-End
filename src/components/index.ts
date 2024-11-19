@@ -13,6 +13,7 @@ export * from './ui/form/CourseFormModal';
 export * from './ui/form/ExamFormModal';
 export * from './ui/form/LanguageSelector';
 export * from './ui/form/UserCreationModal';
+export * from './ui/form/CertificationFormModal';
 
 export * from './grid/CurseGrid';
 export * from './grid/ProviderGrid';

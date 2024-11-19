@@ -39,6 +39,12 @@ export default function Page() {
       icon: <FaCogs />, 
       onClick: () => router.push('/admin/exams'),
     },
+    {
+      title: 'SCR',
+      description: 'Gestión de personal certificado',
+      icon: <FaCogs />, 
+      onClick: () => router.push('/admin/scr'),
+    },
   ];
 
 

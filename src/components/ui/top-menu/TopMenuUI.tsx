@@ -30,10 +30,10 @@ const navItems = [
         { path: '/trainMe/curses', text: 'Cursos' },
     ] },
     { path: '/certifyMe', text: 'Certificarme' },
-    { path: '/certifications', text: 'Certificaciones' },
+    // { path: '/certifications', text: 'Certificaciones' },
     { path: '/workWithUs', text: 'Trabaja con nosotros' },
     { path: '/news', text: 'Noticias' },
-    { path: '/SCR', text: 'SCR' },
+    { path: '/scr', text: 'SCR' },
 ];
 
 export function TopMenuUI(props: Props) {
