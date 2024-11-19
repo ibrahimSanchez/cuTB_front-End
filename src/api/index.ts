@@ -8,3 +8,4 @@ export * from './login';
 export * from './approve';
 export * from './user';
 export * from './certificationRecord';
+export * from './membership_provider_request';

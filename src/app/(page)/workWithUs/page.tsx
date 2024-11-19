@@ -3,15 +3,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TextField, RadioGroup, FormControlLabel, Radio, Typography, Box } from '@mui/material';
+import { postMembership_provider_request } from '@/api';
+import { Membership_provider_request } from '@/interfaces';
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  address?: string;
-  type: 'member' | 'provider';
-  additionalComments?: string;
-}
 
 export default function MembershipRequestSection() {
   const [formType, setFormType] = useState<'member' | 'provider'>('member');
@@ -20,15 +14,25 @@ export default function MembershipRequestSection() {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<Membership_provider_request>({
     defaultValues: {
       type: 'member',
     },
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log('Datos del formulario:', data);
+  const onSubmit = async (data: Membership_provider_request) => {
+    try {
+      const res = await postMembership_provider_request(data);
+      console.log(res.data);
+      reset();
+
+    } catch (error) {
+      console.log(error)
+    }
+
+
   };
 
   return (

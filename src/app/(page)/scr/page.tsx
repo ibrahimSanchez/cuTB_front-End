@@ -95,7 +95,7 @@ const CertificationTable: React.FC = () => {
             </tr>
           ) : (
             filteredData.map((record) => (
-              <tr key={record.id} className="border-t">
+              <tr key={record.uid} className="border-t">
                 <td className="px-4 py-2 border border-slate-700">{record.name}</td>
                 <td className="px-4 py-2 border border-slate-700">{record.certification}</td>
                 <td className="px-4 py-2 border border-slate-700">{record.level}</td>
