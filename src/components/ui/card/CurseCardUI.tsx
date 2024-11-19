@@ -1,7 +1,7 @@
 "use client";
 
 import { Curse } from '@/interfaces';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 export const CurseCardUI = ({ curse }: Props) => {
 
-    const { name, prise, email, endDate, startDate, uid } = curse;
+    const { name, prise, email, endDate, startDate } = curse;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(email)
@@ -30,13 +30,13 @@ export const CurseCardUI = ({ curse }: Props) => {
     return (
         <div className="min-w-[350px] min-h-[400px] max-w-[350px] bg-[--card] border border-[--text_color] rounded-lg rounded-t-none shadow m-5 card flex flex-col justify-between">
 
-            <Link href={`/trainMe/curses/curse/${uid}`}>
-                <div className="p-5 gradient-card rounded-br-full h-[150px] flex flex-col justify-between">
-                    <h5 className="text-xl tracking-tight text-white">
-                        {name}
-                    </h5>
-                </div>
-            </Link>
+            {/* <Link href={`/trainMe/curses/curse/${uid}`}> */}
+            <div className="p-5 gradient-card rounded-br-full h-[150px] flex flex-col justify-between">
+                <h5 className="text-xl tracking-tight text-white">
+                    {name}
+                </h5>
+            </div>
+            {/* </Link> */}
 
             <p className="mt-3 font-normal text-sm text-[#b13340] p-5">
                 Precio: {prise}

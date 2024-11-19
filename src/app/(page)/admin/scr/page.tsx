@@ -86,6 +86,7 @@ const CertificationRecordPage: React.FC = () => {
       console.error('Error saving record:', error);
       setMessage('Error al guardar el registro.');
       setIsError(true);
+      setIsModalOpen(false)
     } finally {
       setIsMessageOpen(true);
     }

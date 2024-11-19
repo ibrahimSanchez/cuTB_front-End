@@ -96,6 +96,7 @@ export default function Page() {
       setMessage('Error al guardar los cambios.');
       setIsError(true);
       console.error(error);
+      setIsModalOpen(false)
     } finally {
       setIsMessageOpen(true);
     }

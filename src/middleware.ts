@@ -38,15 +38,23 @@ export function middleware(req: NextRequest) {
             return NextResponse.redirect(url);
         }
 
-        if (requestedPage === '/admin/users' || requestedPage === '/admin/providers' || requestedPage === '/admin/approvalCurseExam') {
+        if (requestedPage === '/admin/users' ||
+            requestedPage === '/admin/providers' ||
+            requestedPage === '/admin/approvalCurseExam' ||
+            requestedPage === '/admin/membership_provider_request'
+        ) {
             if (userRole !== 'ADMIN_ROLE') {
                 url.pathname = `/unauthorized`;
                 url.search = `p=${requestedPage}`;
                 return NextResponse.redirect(url);
             }
         }
-
-        if ((requestedPage === '/admin/curses' || requestedPage === '/admin/exams') &&
+        
+        if ((requestedPage === '/admin/curses' ||
+            requestedPage === '/admin/exams' ||
+            requestedPage === '/admin/news' ||
+            requestedPage === '/admin/scr'
+        ) &&
             (userRole !== 'ADMIN_ROLE' && userRole !== 'ACTIVITY_MANAGER_ROLE')) {
             url.pathname = `/unauthorized`;
             url.search = `p=${requestedPage}`;
