@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Curse, Exam } from '@/interfaces';
 import { approveCurse, approveExam, deleteCurse, deleteExam } from '@/api';
 import { ConfirmationModal, MessageModal } from '@/components';
+import Spinner from '../spinner/Spinner';
 
 interface ProviderTableProps {
   data: Curse[] | Exam[];
@@ -93,7 +94,7 @@ const ApprovalCurseExamTable: React.FC<ProviderTableProps> = ({ data, type, relo
           {data.length === 0 ? (
             <tr>
               <td colSpan={7} className="text-center py-4">
-                No hay datos que mostrar
+                <Spinner />
               </td>
             </tr>
           ) : (

@@ -6,6 +6,7 @@ import { getNews, postNews, putNews, deleteNews } from '@/api';
 import { News } from '@/interfaces';
 import { ConfirmationModal, MessageModal } from '@/components';
 import NewsCreationModal from '@/components/ui/form/NewsCreationModal';
+import Spinner from '@/components/ui/spinner/Spinner';
 
 export default function NewsManagementPage() {
   const [newsList, setNewsList] = useState<News[]>([]);
@@ -116,7 +117,7 @@ export default function NewsManagementPage() {
             {isLoading ? (
               <tr>
                 <td colSpan={4} className="text-center py-4">
-                  Cargando noticias...
+                  <Spinner />
                 </td>
               </tr>
             ) : (

@@ -6,6 +6,7 @@ import { deleteCurse, getCurses, postCurse, putCurse } from '@/api';
 import { Curse } from '@/interfaces';
 import CourseCreationModal from '@/components/ui/modal/CourseCreationModal';
 import { ConfirmationModal, MessageModal } from '@/components';
+import Spinner from '@/components/ui/spinner/Spinner';
 
 export default function Page() {
   const [courses, setCourses] = useState<Curse[]>([]);
@@ -135,7 +136,7 @@ export default function Page() {
             {isLoading ? (
               <tr>
                 <td colSpan={8} className="text-center py-4">
-                  Cargando cursos...
+                  <Spinner />
                 </td>
               </tr>
             ) : (

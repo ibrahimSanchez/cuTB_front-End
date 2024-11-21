@@ -7,6 +7,7 @@ import { Provider } from '@/interfaces';
 import Link from 'next/link';
 import ProviderFormModal from '@/components/ui/form/ProviderFormModal';
 import { ConfirmationModal, MessageModal } from '@/components';
+import Spinner from '@/components/ui/spinner/Spinner';
 
 export default function Page() {
   const [providers, setProviders] = useState<Provider[]>([]);
@@ -134,7 +135,9 @@ export default function Page() {
           <tbody>
             {isLoading ? (
               <tr>
-                <td colSpan={12} className="text-center py-4">Cargando proveedores...</td>
+                <td colSpan={12} className="text-center py-4">
+                  <Spinner />
+                </td>
               </tr>
             ) : (
               providers.map((provider) => (

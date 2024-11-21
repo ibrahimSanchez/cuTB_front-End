@@ -5,6 +5,7 @@ import { FaTrash } from 'react-icons/fa';
 import { Membership_provider_request } from '@/interfaces';
 import { ConfirmationModal, MessageModal } from '@/components';
 import { deleteMembership_provider_request, getMembership_provider_request } from '@/api';
+import Spinner from '@/components/ui/spinner/Spinner';
 
 export default function MembershipProviderRequestPage() {
   const [requests, setRequests] = useState<Membership_provider_request[]>([]);
@@ -78,7 +79,7 @@ export default function MembershipProviderRequestPage() {
             {isLoading ? (
               <tr>
                 <td colSpan={6} className="text-center py-4">
-                  Cargando solicitudes...
+                  <Spinner />
                 </td>
               </tr>
             ) : (

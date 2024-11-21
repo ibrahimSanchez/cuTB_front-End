@@ -34,6 +34,7 @@ export * from './ui/modal/ConfirmationModal';
 export * from './ui/modal/MessageModal';
 export * from './ui/modal/NewsModal';
 export * from './ui/modal/CourseModal';
+export * from './ui/modal/ErrorModal';
 
 export * from './ui/table/ApprovalCurseExamTable';
 export * from './ui/spinner/Spinner';

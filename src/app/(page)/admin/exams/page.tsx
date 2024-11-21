@@ -6,6 +6,7 @@ import { deleteExam, getExams, postExam, putExam } from '@/api';
 import { Exam } from '@/interfaces';
 import ExamCreationModal from '@/components/ui/modal/ExamCreationModal';
 import { ConfirmationModal, MessageModal } from '@/components';
+import Spinner from '@/components/ui/spinner/Spinner';
 
 export default function Page() {
   const [exams, setExams] = useState<Exam[]>([]);
@@ -132,7 +133,7 @@ export default function Page() {
             {isLoading ? (
               <tr>
                 <td colSpan={6} className="text-center py-4">
-                  Cargando exámenes...
+                  <Spinner />
                 </td>
               </tr>
             ) : (

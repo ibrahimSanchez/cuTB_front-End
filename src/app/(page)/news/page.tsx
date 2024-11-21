@@ -7,6 +7,7 @@ import { getNews } from "@/api";
 import NewsCarousel from "@/components/ui/carousel/NewsCarousel";
 import NewsModal from "@/components/ui/modal/NewsModal";
 import { SectionHome } from "@/components";
+import Spinner from "@/components/ui/spinner/Spinner";
 
 const NewsPage = () => {
   const [newsData, setNewsData] = useState<News[]>([]);
@@ -39,9 +40,8 @@ const NewsPage = () => {
     setIsModalOpen(false);
   };
 
-  if (loading) {
-    return <div className="flex justify-center items-center h-screen">Cargando noticias...</div>;
-  }
+
+
 
   return (
 
@@ -59,15 +59,21 @@ const NewsPage = () => {
       <div className="h-screen mt-16 flex flex-col lg:flex-row items-center lg:items-start lg:justify-between p-4 lg:p-8">
         <div className="w-full lg:w-2/3">
 
-          <div className="max-h-[600px] overflow-y-auto space-y-4">
-            {newsData.map((news) => (
-              <NewsCard
-                key={news.uid}
-                news={news}
-                onReadMore={() => openModal(news.uid)}
-              />
-            ))}
-          </div>
+          {
+            loading ? (
+              <Spinner />
+            ) : (
+              <div className="max-h-[600px] overflow-y-auto space-y-4">
+                {newsData.map((news) => (
+                  <NewsCard
+                    key={news.uid}
+                    news={news}
+                    onReadMore={() => openModal(news.uid)}
+                  />
+                ))}
+              </div>
+            )
+          }
         </div>
 
         <div className="hidden lg:block w-1/3 p-4">

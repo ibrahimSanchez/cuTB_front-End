@@ -6,6 +6,7 @@ import { deleteUser, getUsers, postUser, putUser } from '@/api';
 import { User } from '@/interfaces';
 import UserCreationModal from '@/components/ui/form/UserCreationModal';
 import { ConfirmationModal, MessageModal } from '@/components';
+import Spinner from '@/components/ui/spinner/Spinner';
 
 
 
@@ -135,7 +136,7 @@ export default function UsersPage() {
             {isLoading ? (
               <tr>
                 <td colSpan={6} className="text-center py-4">
-                  Cargando usuarios...
+                 <Spinner />
                 </td>
               </tr>
             ) : (

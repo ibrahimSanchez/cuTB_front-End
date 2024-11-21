@@ -7,6 +7,7 @@ import { CertificationRecord } from '@/interfaces';
 
 import { ConfirmationModal, MessageModal } from '@/components';
 import CertificationFormModal from '@/components/ui/form/CertificationFormModal';
+import Spinner from '@/components/ui/spinner/Spinner';
 
 const CertificationRecordPage: React.FC = () => {
   const [records, setRecords] = useState<CertificationRecord[]>([]);
@@ -118,7 +119,9 @@ const CertificationRecordPage: React.FC = () => {
           <tbody>
             {isLoading ? (
               <tr>
-                <td colSpan={5} className="text-center py-4">Cargando registros...</td>
+                <td colSpan={5} className="text-center py-4">
+                  <Spinner />
+                </td>
               </tr>
             ) : (
               records.map((record) => (

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { CertificationRecord } from '@/interfaces';
 import { getCertificationRecord } from '@/api';
 import { SectionHome } from '@/components';
+import Spinner from '@/components/ui/spinner/Spinner';
 
 const CertificationTable: React.FC = () => {
   const [data, setData] = useState<CertificationRecord[]>([]);
@@ -52,7 +53,7 @@ const CertificationTable: React.FC = () => {
 
       <SectionHome
         className="shadow-2xl"
-        title="Certificaciones"
+        title="Certificados"
         text="En esta sección encontrarás un listado de los profesionales que han obtenido la 
         certificación Scrum, demostrando su dominio en la gestión ágil de proyectos y su capacidad 
         para liderar equipos de alto rendimiento"
@@ -61,7 +62,7 @@ const CertificationTable: React.FC = () => {
 
       <section className='h-screen mt-16 p-4'>
 
-      <h4 className="text-3xl font-bold text-blue-950 mb-6 text-center">Listado de certificados</h4>
+        <h4 className="text-3xl font-bold text-blue-950 mb-6 text-center">Listado de certificados</h4>
 
         <div className="flex items-center space-x-4 mb-4">
           <div className="relative">
@@ -98,7 +99,7 @@ const CertificationTable: React.FC = () => {
             {isLoading ? (
               <tr>
                 <td colSpan={4} className="text-center py-4">
-                  Cargando datos...
+                  <Spinner />
                 </td>
               </tr>
             ) : filteredData.length === 0 ? (
