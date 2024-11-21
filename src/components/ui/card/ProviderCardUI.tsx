@@ -21,6 +21,7 @@ export const ProviderCardUI = ({ provider }: Props) => {
         email,
         website,
         // uid
+        type
     } = provider;
 
     const [open, setOpen] = React.useState(false);
@@ -36,35 +37,35 @@ export const ProviderCardUI = ({ provider }: Props) => {
 
     return (
         <>
-            <div className="p-5 flex flex-col justify-between items-center max-w-sm bg-[--card] rounded-lg shadow m-6 py-4 cardAnimate">
+            <div className="p-5 flex flex-col justify-between items-center max-w-sm bg-page_background2 rounded-lg shadow m-6 py-4 animateMove">
 
                 <div className="flex justify-center mb-5">
                     <Image
                         className="rounded-t-lg"
-                        src={`/images/ISQUI.jpg`}
+                        src={`/system/${type === 'curse_provider' ? 'Course.png' : 'exams.png'}`}
                         alt='img'
-                        width={150}
+                        width={100}
                         height={100}
                     />
                 </div>
 
                 {/* <div className="p-5"> */}
-                <h5 className="mb-4 text-xl font-semibold tracking-tight text-[--text_color]">
+                <h5 className="mb-4 text-xl font-semibold tracking-tight text-secondary">
                     {name}
                 </h5>
-                <p className="mb-5 font-normal text-[--text_secondary_color]">
+                <p className="mb-5 font-normal text-primary">
                     {country}
                 </p>
 
-                <p className="mb-5 font-normal text-[--text_secondary_color]">
+                <p className="mb-5 font-normal text-primary">
                     {email}
                 </p>
 
-                <Link href={website} className="inline-flex font-medium items-center text-[--text_secondary_color] underline">
+                <Link href={website} className="inline-flex font-medium items-center text-card underline">
                     Visitar sitio web
                 </Link>
 
-                <button className='mt-4 border shadow-lg px-4 py-2 rounded-lg hover:border-[--primary]' onClick={handleClickOpen}>
+                <button className='mt-4 border shadow-xl px-4 py-2 rounded-lg hover:border-primary text-primary' onClick={handleClickOpen}>
                     Ver mas detalles
                 </button>
 

@@ -1,31 +1,28 @@
-import { TrainingCard } from "@/components";
+import { SectionHome, TrainingCard } from "@/components";
 
 
 
 
 export default function TrainMe() {
   return (
-    <>
-      <h1 className="title mb-2">Entrenarme</h1>
-      {/* line separator */}
-      <div className="w-full h-1 bg-blue-950 mb-5"></div>
+    <div className="mx-auto">
+    
+      <SectionHome
+        className="pt-20"
+          title="Entrenarme!!!"
+          text="Los instructores que imparten entrenamientos desde el CuTB tienen amplios conocimientos y experiencia en pruebas de software.
+              Estos proveedores de formación pueden y proporcionarán información adicional sobre terminología de pruebas, técnicas, métodos
+              y contenido del plan de estudios ISTQB, para que sea más fácil obtener las certificaciones ISTQB."
+          image="/system/entrenarme.png"
+        />
 
-      <section className="mt-8">
 
-        <div>
-          <h4 className="text-3xl mt-16 mb-6">
-            Los instructores
-          </h4>
+      <section className="my-8 px-4">
+        <h4 className="text-3xl font-bold text-center text-blue-950 mb-10">
+          Instructores
+        </h4>
 
-          <p className="leading-7 mb-4">
-            Los instructores que imparten entrenamientos desde el CuTB tienen amplios conocimientos y experiencia en pruebas de software.
-            Estos proveedores de formación pueden y proporcionarán información adicional sobre terminología de pruebas, técnicas, métodos
-            y contenido del plan de estudios ISTQB, para que sea más fácil obtener las certificaciones ISTQB.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <TrainingCard
             photoUrl="/images/Yaimi_Trujillo_Casañola.png"
             name="Dr. C. Yaimí Trujillo"
@@ -56,10 +53,9 @@ export default function TrainMe() {
             ]}
           />
         </div>
-
       </section>
 
 
-    </>
+    </div>
   )
 }

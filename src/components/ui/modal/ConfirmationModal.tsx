@@ -29,13 +29,13 @@ export function ConfirmationModal({
             <DialogActions>
                 <Button
                     onClick={onConfirm}
-                    className="bg-red-600 hover:bg-red-800 text-white"
+                    className="bg-red-800 hover:bg-primary text-white"
                 >
                     Confirmar
                 </Button>
                 <Button
                     onClick={onCancel}
-                    className="bg-[--primary] hover:bg-[--secondary] text-white"
+                    className="bg-secondary hover:bg-text_color text-white"
                 >
                     Cancelar
                 </Button>

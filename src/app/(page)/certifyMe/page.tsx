@@ -1,3 +1,4 @@
+import { SectionHome } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,15 +6,16 @@ import Link from "next/link";
 export default function CertifyMe() {
   return (
     <>
+      <SectionHome
+        className="shadow-2xl"
+        title="Certificarme"
+        text="Explora los exámenes de certificación disponibles para validar tus conocimientos y 
+        habilidades en pruebas de software, con el respaldo de organismos reconocidos."
+        image="/system/Course.png"
+      />
 
-      <h1 className="title mb-2">Certificarme</h1>
-      {/* line separator */}
-      <div className="w-full h-1 bg-blue-950 mb-4"></div>
 
-
-
-
-      <section className="mt-8 lg:flex">
+      <section className="py-10 lg:flex bg-background shadow-2xl px-4">
 
         <div className="lg:w-[30%] flex flex-col items-center">
           <Image
@@ -24,7 +26,7 @@ export default function CertifyMe() {
             src='/images/ISQUI.jpg'
           />
 
-          <button className="btn-primary">
+          <button className="btn-primary mb-6">
             <Link
               href="http://www.google.com/url?q=http%3A%2F%2Fwww.isqi.org&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw1WORSc9jpbtheVg_42Ay_m"
             >
@@ -35,10 +37,7 @@ export default function CertifyMe() {
 
 
         <div className="lg:w-[60%] lg:ml-6">
-
-          <h4 className="text-3xl mt-16 mb-6">
-            EXÁMENES DE CERTIFICACIÓN
-          </h4>
+          <h4 className="text-3xl font-bold text-blue-950 mb-6">Exámenes de certificación</h4>
 
           <p className="leading-7 mb-4">
             Para ejecutar los exámenes, el CuTB puede contar con convenio con Proveedores de Exámenes Acreditados por ISTQB®.
@@ -63,12 +62,11 @@ export default function CertifyMe() {
 
 
 
-      <section>
-        <h4 className="subTitle mt-16 mb-6">
-          Esquema de Certificaciones
-        </h4>
+      <section className="mb-20 py-16 px-6 rounded-lg">
 
-        <p className="leading-7">
+        <h4 className="text-3xl font-bold text-blue-950 mb-6 text-center"> Esquema de Certificacioness</h4>
+
+        <p className="leading-7 text-center">
           Este esquema de certificaciones es referencia en la industria para la profesión de pruebas de Software
         </p>
 

@@ -9,6 +9,10 @@ export * from './ui/card/CurseCardUI';
 export * from './ui/card/ProviderCardUI';
 export * from './ui/card/AdminModuleCard';
 export * from './ui/card/NewsCard';
+export * from './ui/card/HomeCard';
+export * from './ui/card/ExecutiveMember';
+
+export * from './ui/list/BulletList';
 
 export * from './ui/dialog/ProviderDialog';
 
@@ -35,3 +39,5 @@ export * from './ui/table/ApprovalCurseExamTable';
 export * from './ui/spinner/Spinner';
 
 export * from './ui/carousel/NewsCarousel';
+
+export * from './ui/section/SectionHome';

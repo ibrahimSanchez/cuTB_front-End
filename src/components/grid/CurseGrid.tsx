@@ -48,35 +48,33 @@ export const CurseGrid = () => {
 
 
     return (
-        <section className="mt-8">
 
-            {
-                curse_levels.map(({ level, uid }) => (
+        <section className="my-8 px-4">            {
+            curse_levels.map(({ level, uid }) => (
 
-                    <div key={uid} className="mb-8">
-                        <h4 className="subTitle mb-2">{level}</h4>
-
-                        <div className={
-                            clsx(
-                                "flex overflow-auto",
-                                { "justify-evenly": false })
-                        }>
-                            {
-                                curseShow.filter(({ curse_levelId }) => curse_levelId === uid).length === 0 ?
-                                    <p className="text-lg text-[--primary] underline cursor-default">No hay cursos disponibles</p> :
-                                    curseShow.filter(({ curse_levelId }) => curse_levelId === uid).map((curse) => (
-                                        <CurseCardUI
-                                            key={curse.uid}
-                                            curse={curse}
-                                        />
-                                    ))
-                            }
-
-                        </div>
+                <div key={uid} className="mb-8">
+                    <h4 className="text-3xl font-bold text-center text-blue-950 mb-10">
+                        {level}
+                    </h4>
+                    <div className={
+                        clsx(
+                            "flex overflow-auto",
+                            { "justify-evenly": false })
+                    }>
+                        {
+                            curseShow.filter(({ curse_levelId }) => curse_levelId === uid).length === 0 ?
+                                <p className="text-lg text-[--primary] underline cursor-default">No hay cursos disponibles</p> :
+                                curseShow.filter(({ curse_levelId }) => curse_levelId === uid).map((curse) => (
+                                    <CurseCardUI
+                                        key={curse.uid}
+                                        curse={curse}
+                                    />
+                                ))
+                        }
                     </div>
-
-                ))
-            }
+                </div>
+            ))
+        }
 
         </section>
     )

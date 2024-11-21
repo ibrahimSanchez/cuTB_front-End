@@ -6,12 +6,13 @@ import NewsCard from "@/components/ui/card/NewsCard";
 import { getNews } from "@/api";
 import NewsCarousel from "@/components/ui/carousel/NewsCarousel";
 import NewsModal from "@/components/ui/modal/NewsModal";
+import { SectionHome } from "@/components";
 
 const NewsPage = () => {
   const [newsData, setNewsData] = useState<News[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedNewsId, setSelectedNewsId] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false); 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -43,33 +44,43 @@ const NewsPage = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between p-4 lg:p-8">
-      <div className="w-full lg:w-2/3">
-        <h1 className="title mb-2">Noticias</h1>
-        {/* Line separator */}
-        <div className="w-full h-1 bg-blue-950 mb-4"></div>
 
-        <div className="h-96 overflow-y-auto space-y-4">
-          {newsData.map((news) => (
-            <NewsCard
-              key={news.uid}
-              news={news}
-              onReadMore={() => openModal(news.uid)} 
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="hidden lg:block w-1/3 p-4">
-        <NewsCarousel />
-      </div>
-
-      <NewsModal
-        newsId={selectedNewsId}
-        isOpen={isModalOpen}
-        onClose={closeModal}
+    <>
+      <SectionHome
+        className="shadow-2xl"
+        title="Noticias"
+        text="Mantente actualizado con las últimas novedades sobre certificaciones, cursos y eventos 
+        relacionados con el mundo del testing y la tecnología. Aquí compartimos información relevante 
+        para todos los profesionales del sector."
+        image="/system/news.png"
       />
-    </div>
+
+
+      <div className="h-screen mt-16 flex flex-col lg:flex-row items-center lg:items-start lg:justify-between p-4 lg:p-8">
+        <div className="w-full lg:w-2/3">
+
+          <div className="max-h-[600px] overflow-y-auto space-y-4">
+            {newsData.map((news) => (
+              <NewsCard
+                key={news.uid}
+                news={news}
+                onReadMore={() => openModal(news.uid)}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="hidden lg:block w-1/3 p-4">
+          <NewsCarousel />
+        </div>
+
+        <NewsModal
+          newsId={selectedNewsId}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      </div>
+    </>
   );
 };
 

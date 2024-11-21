@@ -72,7 +72,7 @@ export default function ProviderCoursesExams({ providerId, providerType }: Provi
                             <h4 className="text-lg font-semibold text-[--text_color]">{level.level}</h4>
                             <ul className="list-disc ml-6">
                                 {items.map((course) => (
-                                    <li key={course.uid} className="text-[--text_secondary_color]">{course.name}</li>
+                                    <li key={course.uid} className="text-primary">{course.name}</li>
                                 ))}
                             </ul>
                         </div>

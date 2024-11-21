@@ -90,7 +90,7 @@ export function TopMenuUI(props: Props) {
         <>
             <CssBaseline />
             <AppBar component="nav">
-                <Toolbar className='navbar'>
+                <Toolbar className='navbar bg-gradient1'>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"

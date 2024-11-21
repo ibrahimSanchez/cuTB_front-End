@@ -69,7 +69,7 @@ export default function Page() {
 
       <div className="bg-[#fafbfb] mt-6 pb-8 px-10 rounded-3xl shadow-2xl shadow-[#413e3e]">
         <div className="flex flex-col items-center">
-          <Image alt="Login-image" width={250} height={250} src={'/icons/Login.svg'} />
+          <Image alt="Login-image" width={250} height={250} src={'/system/Login.png'} />
         </div>
 
         <form name="login" className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>

@@ -1,14 +1,18 @@
-import { ProviderGrid } from "@/components";
+import { ProviderGrid, SectionHome } from "@/components";
 
 
 
 export default function Curses() {
   return (
     <>
-      <h1 className="title mb-2">Proveedores</h1>
-      {/* line separator */}
-      <div className="w-full h-1 bg-blue-950 mb-5"></div>
-
+      <SectionHome
+        title="Proveedores"
+        text="En esta sección encontrarás los principales proveedores de exámenes y cursos acreditados 
+        por el CuTB. Estos proveedores están comprometidos con la calidad y la excelencia en la 
+        formación y certificación en pruebas de software, ofreciendo recursos que garantizan el 
+        desarrollo profesional y el cumplimiento de estándares internacionales como los del ISTQB®"
+        image="/system/proveedor.png"
+        />
 
       <ProviderGrid />
 

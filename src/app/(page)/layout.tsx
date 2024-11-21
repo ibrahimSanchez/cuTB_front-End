@@ -12,7 +12,7 @@ export default function RootLayout({
 
       <TopMenuUI />
 
-      <div className="min-h-screen px-5 sm:px-10 py-6 mt-16 xl:mt-24">
+      <div className="min-h-screen sm:p py-6 mt-10 xl:mt-14">
         {children}
       </div>
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 interface TrainingCardProps {
     photoUrl: string;
@@ -9,31 +9,44 @@ interface TrainingCardProps {
     trainings: string[];
 }
 
-export const TrainingCard: React.FC<TrainingCardProps> = ({ photoUrl, name, position, workplace, trainings }) => {
+export const TrainingCard: React.FC<TrainingCardProps> = ({
+    photoUrl,
+    name,
+    position,
+    workplace,
+    trainings,
+}) => {
     return (
-        <div className="flex flex-col lg:flex-row  rounded-lg overflow-hidden m-4">
-            {/* Foto */}
-            <div className="flex justify-center lg:w-1/2 w-full">
+        <div className="relative group w-full lg:w-80 h-auto shadow-lg rounded-lg overflow-hidden">
+            {/* Imagen del instructor */}
+            <div className="relative w-full h-64">
                 <Image
                     src={photoUrl}
                     alt={name}
                     width={300}
-                    height={100}
-                    className="rounded-t-lg lg:rounded-l-lg lg:rounded-t-none"
+                    height={300}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
+                {/* Capa de opacidad sobre la imagen */}
+                <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-50 transition-opacity duration-300"></div>
             </div>
 
-            <div className="py-6 lg:w-1/2 flex flex-col justify-between ml-6">
-                <div>
-                    <h2 className="text-2xl font-semibold text-gray-800">{name}</h2>
-                    <p className="text-sm text-gray-600 mt-1">{position}</p>
-                    <p className="text-sm text-gray-600">{workplace}</p>
-                </div>
+            {/* Contenedor de información */}
+            <div className="p-4 bg-white">
+                <h2 className="text-xl font-bold text-gray-800">{name}</h2>
+                <p className="text-sm text-gray-600">{position}</p>
+                {workplace && <p className="text-sm text-gray-600">{workplace}</p>}
+            </div>
 
+            {/* Información superpuesta al hacer hover */}
+            <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white text-center p-4">
+                <h3 className="text-xl font-semibold">{name}</h3>
+                <p className="text-sm">{position}</p>
+                {workplace && <p className="text-sm">{workplace}</p>}
 
                 <div className="mt-4">
-                    <h3 className="text-lg font-medium text-gray-800">Entrenamiento</h3>
-                    <ul className="list-disc list-inside mt-2 space-y-1 text-gray-600">
+                    <h4 className="text-lg font-medium">Entrenamientos</h4>
+                    <ul className="list-disc list-inside space-y-1 text-sm mt-2">
                         {trainings.map((training, index) => (
                             <li key={index}>{training}</li>
                         ))}
@@ -43,4 +56,3 @@ export const TrainingCard: React.FC<TrainingCardProps> = ({ photoUrl, name, posi
         </div>
     );
 };
-
