@@ -5,9 +5,11 @@ type UserLogin = {
     password: string,
 };
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL_API_BACKEND;
+
 
 export const login = (user: UserLogin) => {
     // console.log(user)
-    return axios.post('http://localhost:8080/api/auth/login', user)
+    return axios.post(`${BASE_URL}api/auth/login`, user)
 }
 

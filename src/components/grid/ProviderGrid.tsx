@@ -22,7 +22,6 @@ export const ProviderGrid = () => {
     }, []);
 
     const courseProviders = providers.filter(({ type }) => type === "curse_provider");
-    const examProviders = providers.filter(({ type }) => type === "exam_provider");
 
     return (
         <div className="px-4 lg:px-8">
@@ -45,24 +44,6 @@ export const ProviderGrid = () => {
                 </div>
             </section>
 
-            {/* Sección de Proveedores de Exámenes */}
-            <section className="mb-12">
-                <h4 className="text-3xl font-bold text-center text-blue-950 mb-2">
-                    Proveedores de exámenes:
-                </h4>
-                 <div className="w-full h-1 bg-blue-950 mb-5"></div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center items-center">
-                    {examProviders.length > 0 ? (
-                        examProviders.map((provider) => (
-                            <ProviderCardUI key={provider.uid} provider={provider} />
-                        ))
-                    ) : (
-                        <p className="text-gray-600 text-center col-span-2">
-                            No hay proveedores de exámenes disponibles.
-                        </p>
-                    )}
-                </div>
-            </section>
 
         </div>
     );

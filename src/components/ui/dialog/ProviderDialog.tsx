@@ -6,7 +6,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import ProviderCoursesExams from '@/components/grid/ProviderCoursesExams';
+import ProviderCourses from '@/components/grid/ProviderCourses';
+import ProviderExams from '@/components/grid/ProviderExams';
 
 interface Props {
     open: boolean;
@@ -74,7 +75,12 @@ export const ProviderDialog = ({ open, handleClose, provider }: Props) => {
 
                 <div className="mt-6">
                     <div className="w-full h-[1px] mb-4 bg-[--primary] mt-2"></div>
-                    <ProviderCoursesExams providerId={uid} providerType={type} />
+
+                    {
+                        type === 'exam_provider' ?
+                            <ProviderExams providerId={uid} /> :
+                            <ProviderCourses providerId={uid} providerType={type} />
+                    }
                 </div>
             </DialogContent>
         </Dialog>

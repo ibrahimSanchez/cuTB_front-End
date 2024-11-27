@@ -2,9 +2,10 @@ import { getCookie } from "@/helper";
 import { Provider } from "@/interfaces";
 import axios from "axios";
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL_API_BACKEND;
 
 export const getProviders = () => {
-    return axios.get('http://localhost:8080/api/providers')
+    return axios.get(`${BASE_URL}api/providers`)
 }
 
 
@@ -18,7 +19,7 @@ export const postProvider = (data: Provider) => {
         }
     };
 
-    return axios.post(`http://localhost:8080/api/providers`, data, config)
+    return axios.post(`${BASE_URL}api/providers`, data, config)
 }
 
 export const putProvider = (data: Provider) => {
@@ -32,7 +33,7 @@ export const putProvider = (data: Provider) => {
         }
     };
 
-    return axios.put(`http://localhost:8080/api/providers/${uid}`, data, config)
+    return axios.put(`${BASE_URL}api/providers/${uid}`, data, config)
 }
 
 
@@ -46,6 +47,6 @@ export const deleteProvider = (id: string) => {
         }
     };
     
-    return axios.delete(`http://localhost:8080/api/providers/${id}`, config)
+    return axios.delete(`${BASE_URL}api/providers/${id}`, config)
 }
 

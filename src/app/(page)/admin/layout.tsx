@@ -1,13 +1,11 @@
 'use client';
 
 import Link from "next/link";
-import clsx from 'clsx';
 import { IconButton, Tooltip } from "@mui/material";
 import { usePathname, useRouter } from "next/navigation";
 import { FaUsersCog } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { removeCookie } from "@/helper";
-
 
 
 

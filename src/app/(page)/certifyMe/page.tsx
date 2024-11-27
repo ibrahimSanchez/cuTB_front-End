@@ -1,9 +1,34 @@
-import { SectionHome } from "@/components";
+'use client';
+
+import { getProviders } from "@/api";
+import { ProviderCardUI, SectionHome } from "@/components";
+import { Provider } from "@/interfaces";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 
 export default function CertifyMe() {
+
+
+  const [providers, setProviders] = useState<Provider[]>([]);
+
+  const loadProviders = async () => {
+    try {
+      const res = await getProviders();
+      setProviders(res.data.providers);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    loadProviders();
+  }, []);
+
+
+  const examProviders = providers.filter(({ type }) => type === "exam_provider");
+
   return (
     <>
       <SectionHome
@@ -59,6 +84,29 @@ export default function CertifyMe() {
         </div>
 
       </section>
+
+
+
+
+      {/* Sección de Proveedores de Exámenes */}
+      <section className="my-12 px-6">
+        <h4 className="text-3xl font-bold text-center text-blue-950 mb-2">
+          Proveedores de exámenes:
+        </h4>
+        <div className="w-full h-1 bg-blue-950 mb-5"></div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center items-center">
+          {examProviders.length > 0 ? (
+            examProviders.map((provider) => (
+              <ProviderCardUI key={provider.uid} provider={provider} />
+            ))
+          ) : (
+            <p className="text-gray-600 text-center col-span-2">
+              No hay proveedores de exámenes disponibles.
+            </p>
+          )}
+        </div>
+      </section>
+
 
 
 

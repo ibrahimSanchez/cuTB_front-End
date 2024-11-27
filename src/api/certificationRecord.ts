@@ -3,10 +3,11 @@ import { CertificationRecord } from "@/interfaces"
 import axios from "axios"
 
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL_API_BACKEND;
 
 
 export const getCertificationRecord = () => {
-    return axios.get('http://localhost:8080/api/certification_records')
+    return axios.get(`${BASE_URL}api/certification_records`)
 }
 
 
@@ -20,7 +21,7 @@ export const postCertificationRecord = (data: CertificationRecord) => {
         }
     };
 
-    return axios.post('http://localhost:8080/api/certification_records', data, config)
+    return axios.post(`${BASE_URL}api/certification_records`, data, config)
 }
 
 
@@ -37,7 +38,7 @@ export const putCertificationRecord = (data: CertificationRecord) => {
         }
     };
 
-    return axios.put(`http://localhost:8080/api/certification_records/${uid}`, data, config)
+    return axios.put(`${BASE_URL}api/certification_records/${uid}`, data, config)
 }
 
 
@@ -51,6 +52,6 @@ export const deleteCertificationRecord = (id: string) => {
         }
     };
 
-    return axios.delete(`http://localhost:8080/api/certification_records/${id}`, config)
+    return axios.delete(`${BASE_URL}api/certification_records/${id}`, config)
 }
 

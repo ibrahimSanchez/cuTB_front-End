@@ -2,34 +2,27 @@ import { getCookie } from "@/helper";
 import { Curse } from "@/interfaces";
 import axios from "axios";
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL_API_BACKEND;
 
 export const getCurses = () => {
-    return axios.get('http://localhost:8080/api/curses')
-}
-
-
+    return axios.get(`${BASE_URL}api/curses`);
+};
 
 export const getCurseById = (id: string) => {
-    return axios.get(`http://localhost:8080/api/curses/${id}`)
-}
-
+    return axios.get(`${BASE_URL}api/curses/${id}`);
+};
 
 export const getCursesByProviderId = (id: string) => {
-
     const config = {
         headers: {
             'x-providerId': id
         }
     };
-    return axios.get(`http://localhost:8080/api/curses`, config)
-}
-
-
-
+    return axios.get(`${BASE_URL}api/curses`, config);
+};
 
 export const postCurse = (data: Curse, languageIds: string[]) => {
-
-    const token = getCookie('x-token')
+    const token = getCookie('x-token');
 
     const config = {
         headers: {
@@ -38,12 +31,11 @@ export const postCurse = (data: Curse, languageIds: string[]) => {
         }
     };
 
-    return axios.post(`http://localhost:8080/api/curses`, data, config);
-}
+    return axios.post(`${BASE_URL}api/curses`, data, config);
+};
 
 export const putCurse = (data: Curse, languageIds: string[]) => {
-
-    const token = getCookie('x-token')
+    const token = getCookie('x-token');
 
     const config = {
         headers: {
@@ -54,13 +46,11 @@ export const putCurse = (data: Curse, languageIds: string[]) => {
 
     const { uid } = data;
 
-    return axios.put(`http://localhost:8080/api/curses/${uid}`, data, config);
-}
-
+    return axios.put(`${BASE_URL}api/curses/${uid}`, data, config);
+};
 
 export const deleteCurse = (id: string) => {
-
-    const token = getCookie('x-token')
+    const token = getCookie('x-token');
 
     const config = {
         headers: {
@@ -68,5 +58,5 @@ export const deleteCurse = (id: string) => {
         }
     };
 
-    return axios.delete(`http://localhost:8080/api/curses/${id}`, config);
-}
+    return axios.delete(`${BASE_URL}api/curses/${id}`, config);
+};

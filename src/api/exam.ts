@@ -3,14 +3,17 @@ import { Exam } from "@/interfaces";
 import axios from "axios";
 
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL_API_BACKEND;
+
+
 export const getExams = () => {
-    return axios.get('http://localhost:8080/api/exams')
+    return axios.get(`${BASE_URL}api/exams`)
 }
 
 
 
 export const getExamById = (id: string) => {
-    return axios.get(`http://localhost:8080/api/exams/${id}`)
+    return axios.get(`${BASE_URL}api/exams/${id}`)
 }
 
 
@@ -22,7 +25,7 @@ export const getExamsByProviderId = (id: string) => {
             'x-providerId': id
         }
     };
-    return axios.get(`http://localhost:8080/api/exams`, config)
+    return axios.get(`${BASE_URL}api/exams`, config)
 }
 
 
@@ -40,7 +43,7 @@ export const postExam = (data: Exam, languageIds: string[]) => {
         }
     };
 
-    return axios.post(`http://localhost:8080/api/exams`, data, config);
+    return axios.post(`${BASE_URL}api/exams`, data, config);
     // console.log(data)
 }
 
@@ -57,7 +60,7 @@ export const putExam = (data: Exam, languageIds: string[]) => {
         }
     };
 
-    return axios.put(`http://localhost:8080/api/exams/${uid}`, data, config);
+    return axios.put(`${BASE_URL}api/exams/${uid}`, data, config);
     // console.log(data, uid)
 }
 
@@ -72,6 +75,6 @@ export const deleteExam = (id: string) => {
         }
     };
 
-    return axios.delete(`http://localhost:8080/api/exams/${id}`, config);
+    return axios.delete(`${BASE_URL}api/exams/${id}`, config);
     // console.log(id)
 }

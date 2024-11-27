@@ -3,9 +3,7 @@ import { getCookie } from "@/helper";
 import { User } from "@/interfaces";
 
 
-
-
-
+const BASE_URL = process.env.NEXT_PUBLIC_URL_API_BACKEND;
 
 export const getUsers = () => {
 
@@ -17,7 +15,7 @@ export const getUsers = () => {
         }
     };
 
-    return axios.get(`http://localhost:8080/api/users`, config)
+    return axios.get(`${BASE_URL}api/users`, config)
 }
 
 
@@ -33,7 +31,7 @@ export const postUser = (data: User) => {
         }
     };
 
-    return axios.post(`http://localhost:8080/api/users`, data, config)
+    return axios.post(`${BASE_URL}api/users`, data, config)
 }
 
 
@@ -49,7 +47,7 @@ export const putUser = (data: User) => {
         }
     };
 
-    return axios.put(`http://localhost:8080/api/users/${uid}`, data, config)
+    return axios.put(`${BASE_URL}api/users/${uid}`, data, config)
 }
 
 
@@ -63,6 +61,6 @@ export const deleteUser = (uid: string) => {
         }
     };
 
-    return axios.delete(`http://localhost:8080/api/users/${uid}`, config)
+    return axios.delete(`${BASE_URL}api/users/${uid}`, config)
 }
 

@@ -4,14 +4,15 @@ import axios from "axios";
 
 
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL_API_BACKEND;
 
 export const getMembership_provider_request = () => {
-    return axios.get('http://localhost:8080/api/membership_provider_requests')
+    return axios.get(`${BASE_URL}api/membership_provider_requests`)
 }
 
 
 export const postMembership_provider_request = (data: Membership_provider_request) => {
-    return axios.post('http://localhost:8080/api/membership_provider_requests', data)
+    return axios.post(`${BASE_URL}api/membership_provider_requests`, data)
 }
 
 
@@ -27,7 +28,7 @@ export const putMembership_provider_request = (data: Membership_provider_request
             'x-token': token
         }
     };
-    return axios.put(`http://localhost:8080/api/membership_provider_requests/${uid}`, data, config)
+    return axios.put(`${BASE_URL}api/membership_provider_requests/${uid}`, data, config)
 }
 
 
@@ -41,5 +42,5 @@ export const deleteMembership_provider_request = (uid: string) => {
             'x-token': token
         }
     };
-    return axios.delete(`http://localhost:8080/api/membership_provider_requests/${uid}`, config)
+    return axios.delete(`${BASE_URL}api/membership_provider_requests/${uid}`, config)
 }

@@ -1,7 +1,8 @@
 import axios from "axios";
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL_API_BACKEND;
 
 export const getStream = () => {
-    return axios.get('http://localhost:8080/api/streams')
+    return axios.get(`${BASE_URL}api/streams`)
 }
 

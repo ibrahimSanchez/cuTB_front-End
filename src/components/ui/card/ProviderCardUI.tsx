@@ -5,7 +5,6 @@ import { Provider } from '@/interfaces';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ProviderDialog } from '../dialog/ProviderDialog';
-// import { getCursesByProviderId } from '@/api';
 
 
 type Props = {
@@ -20,7 +19,6 @@ export const ProviderCardUI = ({ provider }: Props) => {
         country,
         email,
         website,
-        // uid
         type
     } = provider;
 
