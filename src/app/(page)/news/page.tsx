@@ -64,13 +64,17 @@ const NewsPage = () => {
               <Spinner />
             ) : (
               <div className="max-h-[600px] overflow-y-auto space-y-4">
-                {newsData.map((news) => (
-                  <NewsCard
-                    key={news.uid}
-                    news={news}
-                    onReadMore={() => openModal(news.uid)}
-                  />
-                ))}
+
+                {
+                  newsData.length === 0 ?
+                    <p className="text-lg ">No hay noticias que mostrar...</p> :
+                    newsData.map((news) => (
+                      <NewsCard
+                        key={news.uid}
+                        news={news}
+                        onReadMore={() => openModal(news.uid)}
+                      />
+                    ))}
               </div>
             )
           }

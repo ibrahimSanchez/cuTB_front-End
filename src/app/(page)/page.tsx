@@ -1,5 +1,4 @@
 import { HomeCard } from "@/components";
-import { Button } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,10 +21,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/trainMe/curses">
-              <Button className="btn-primary">Nuestras certificaciones</Button>
+              <button className="btn-primary">Nuestras certificaciones</button>
             </Link>
             <Link href="/workWithUs">
-              <Button className="btn-secondary">Trabaja con nosotros</Button>
+              <button className="btn-secondary">Trabaja con nosotros</button>
             </Link>
           </div>
         </div>

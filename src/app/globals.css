@@ -74,18 +74,18 @@ body {
 
 /* Botones */
 .btn-primary {
-  @apply px-4 py-3 rounded-lg text-white bg-primary border-2 border-secondary transition duration-300;
+  @apply px-4 py-3 rounded-lg text-white bg-primary transition duration-300;
 }
 .btn-primary:hover {
-  @apply bg-secondary text-white border-primary;
+  @apply bg-secondary text-white;
 }
 
 
 .btn-secondary {
-  @apply px-4 py-3 rounded-lg text-text_secondary_color bg-secondary border-2 border-primary transition duration-300;
+  @apply px-4 py-3 rounded-lg text-text_secondary_color bg-secondary transition duration-300;
 }
 .btn-secondary:hover {
-  @apply bg-primary text-white border-secondary;
+  @apply bg-primary text-white ;
 }
 
 .btn-animation {
